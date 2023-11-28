@@ -14,7 +14,7 @@ const Input = ({ formik }) => {
             label="Title"
             name = "books.title"
             type="text"
-            value={formik.values.books?.title || ""}
+            value={formik.values.books.title}
             onChange={formik.handleChange}
           />
           <TextField
@@ -24,7 +24,7 @@ const Input = ({ formik }) => {
           label="Book Image Link"
           name="books.bookimage"
           type="text"
-          value={formik.values.books?.bookimage || ""}
+          value={formik.values.books.bookimage}
           onChange={formik.handleChange}
           />
     
@@ -70,7 +70,7 @@ const Input = ({ formik }) => {
             label="ISBN"
             type="text"
             name="books.isbn"
-            value={formik.values.books?.isbn|| ""}
+            value={formik.values.books.isbn}
             onChange={formik.handleChange}
           />
           <TextField
@@ -81,7 +81,7 @@ const Input = ({ formik }) => {
             InputLabelProps={{ shrink: true }}
             type="text"
             name="books.publishedon"
-            value={formik.values.books?.publishedon|| ""}
+            value={formik.values.books.publishedon}
             onChange={formik.handleChange}
           />
         </div>

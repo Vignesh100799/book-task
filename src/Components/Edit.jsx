@@ -4,18 +4,20 @@ import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
 import { editBook, setBook } from "../Reducer/Slice";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { TextField } from "@mui/material";
 
 const Edit = () => {
   const params = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate()
 
   const formik = useFormik({
     initialValues: {
       authorname: "",
       authordob: "",
       authorbio: "",
-      books: [
+      books: 
         {
           title: "",
           isbn: "",
@@ -23,7 +25,7 @@ const Edit = () => {
           bookimage: "",
           authorname: "",
         },
-      ],
+      
     },
     validate: (values) => {
       let errors = {};
@@ -34,7 +36,8 @@ const Edit = () => {
       try {
         const response = await axios.put(
           `https://656450eaceac41c0761de102.mockapi.io/author/${params.id}`,
-          values
+          values,
+          navigate('/')
         );
           dispatch(setBook(response.data));
       } catch (error) {
@@ -68,7 +71,94 @@ const Edit = () => {
       <div className="container-fluid">
         <div className="row p-5">
           <h1 className=" text-center m-5">Edit Book</h1>
-          <Input formik={formik} />
+          <div>
+      <form onSubmit={formik.handleSubmit}>
+        <div className="col-6">
+          <TextField
+            id="outlined-basic"
+            className=" input-group m-2"
+            variant="outlined"
+            label="Title"
+            name = "books.title"
+            type="text"
+            value={formik.values.books?.title || ""}
+            onChange={formik.handleChange}
+          />
+          <TextField
+          id="outlined-basic"
+          className=" input-group m-2"
+          variant="outlined"
+          label="Book Image Link"
+          name="books.bookimage"
+          type="text"
+          value={formik.values.books?.bookimage || ""}
+          onChange={formik.handleChange}
+          />
+    
+          <TextField
+            id="outlined-basic"
+            className="input-group m-2"
+            variant="outlined"
+            label="Author"
+            type="text"
+            name="authorname"
+            value={formik.values.authorname}
+            onChange={formik.handleChange}
+          />
+        </div>
+        <div className="col-6">
+          <TextField
+            id="outlined-basic"
+            className=" input-group m-2"
+            variant="outlined"
+            InputLabelProps={{ shrink: true }}
+            label="DOB"
+            type="date"
+            name="authordob"
+            value={formik.values.authordob}
+            onChange={formik.handleChange}
+          />
+          <TextField
+            id="outlined-basic"
+            variant="outlined"
+            className=" input-group m-2"
+            label="Bio"
+            type="text"
+            name="authorbio"
+            value={formik.values.authorbio}
+            onChange={formik.handleChange}
+          />
+        </div>
+        <div className="col-6">
+          <TextField
+            id="outlined-basic"
+            className=" input-group m-2"
+            variant="outlined"
+            label="ISBN"
+            type="text"
+            name="books.isbn"
+            value={formik.values.books?.isbn|| ""}
+            onChange={formik.handleChange}
+          />
+          <TextField
+            id="outlined-basic"
+            variant="outlined"
+            label="Publised on"
+            className=" input-group m-2"
+            InputLabelProps={{ shrink: true }}
+            type="text"
+            name="books.publishedon"
+            value={formik.values.books?.publishedon|| ""}
+            onChange={formik.handleChange}
+          />
+        </div>
+        <div className="col-6 p-2">
+          <button className="btn btn-primary" value={"Submit"} type="submit">
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
         </div>
       </div>
     </div>

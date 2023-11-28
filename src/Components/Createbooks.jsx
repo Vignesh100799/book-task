@@ -4,9 +4,11 @@ import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { setBook } from "../Reducer/Slice";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Createbooks = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   const data = useSelector((state) => state.app);
 
   const formik = useFormik({
@@ -15,13 +17,14 @@ const Createbooks = () => {
       authordob: "",
       authorbio: "",
       books: 
-        [{
+        {
+          authorname: "",
           title: "",
           isbn: "",
           publishedon: "",
           bookimage: "",
-          authorname: "",
-        }],
+        },
+      
     },
     validate: (values) => {
       let errors = {};
@@ -32,10 +35,9 @@ const Createbooks = () => {
       try {
         const response = await axios.post(
           "https://656450eaceac41c0761de102.mockapi.io/author",
-          values
+          values,
+          navigate('/')
         );
-        console.log("Response:", response);
-
         // Check if the response status is 2xx (successful)
         if (response.status >= 200 && response.status < 300) {
           dispatch(setBook(response.data));

@@ -11,25 +11,13 @@ const Card = ({ data, handleDelete }) => {
             {Array.isArray(data.author.books) &&
               data.author.books.map((item, index) => {
                 return (
-                  <div className="col-4">
-                    <div class="card mb-3" style={{ maxWidth: "540px" }}>
-                      <div class="row g-0">
-                        <div class="col-md-4">
-                          <img
-                            src={item.books.bookimage}
-                            class="img-fluid rounded-start"
-                            alt="..."
-                          />
+                  <div key={index} className="col-4">
+                    <div className="card mb-3"  style={{ maxWidth: "310px",height :"460px", backgroundImage: `url(${item.books.bookimage})`}}>
+                      <div className="row g-0">
+                        <div className="col-md-4">
                         </div>
                         <div class="col-md-8">
                           <div class="card-body">
-                            <h5 class="card-title">{item.books.title}</h5>
-                            <p class="card-text">{item.authorbio}</p>
-                            <p class="card-text">
-                              <small class="text-body-secondary">
-                                {item.books.publishedon}
-                              </small>
-                            </p>
                             <div className="container">
                               <div className="row">
                                 <div className="col-6">
