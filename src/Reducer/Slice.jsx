@@ -4,9 +4,9 @@ export const bookSlice = createSlice({
   name: "Books list",
   initialState: {
     author: {
-      books: {
+      books: [
 
-      },
+      ],
     },
   },
   reducers: {

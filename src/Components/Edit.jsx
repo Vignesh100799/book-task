@@ -36,14 +36,7 @@ const Edit = () => {
           `https://656450eaceac41c0761de102.mockapi.io/author/${params.id}`,
           values
         );
-
-        if (response.status >= 200 && response.status < 300) {
           dispatch(setBook(response.data));
-        } else {
-          console.error("Unsuccessful response status:", response.status);
-          console.error("Response data:", response.data);
-          // Handle the error appropriately, e.g., show an error message to the user
-        }
       } catch (error) {
         console.error("Error:", error);
       }
@@ -53,10 +46,16 @@ const Edit = () => {
   useEffect(() => {
     const getbooks = async () => {
       try {
+        if(!params.id){
+          console.error("error")
+          return
+        }
         const bookslist = await axios.get(
           `https://656450eaceac41c0761de102.mockapi.io/author/${params.id}`
         );
-        dispatch(editBook(bookslist.data));
+        // console.log(bookslist.data)
+        // dispatch(editBook(bookslist.data));
+        dispatch(editBook({ id: bookslist.data.id, ...bookslist.data }));
         formik.setValues(bookslist.data);
       } catch (error) {
         console.log(error);

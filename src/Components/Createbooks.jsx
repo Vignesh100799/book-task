@@ -15,13 +15,13 @@ const Createbooks = () => {
       authordob: "",
       authorbio: "",
       books: 
-        {
+        [{
           title: "",
           isbn: "",
           publishedon: "",
           bookimage: "",
           authorname: "",
-        },
+        }],
     },
     validate: (values) => {
       let errors = {};

@@ -42,7 +42,7 @@
   background: transparent;
   backdrop-filter: blur(10px);
 
-  width: 200px;
+  /* width: 400px; */
   border: 1px solid grey;
   border-radius: 8px;
 }

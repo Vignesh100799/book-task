@@ -15,7 +15,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Dashboard/>}/>
         <Route path='/create' element={<Createbooks/>}/>
-        <Route path='/edit' element={<Edit/>}/>
+        <Route path='/edit/:id' element={<Edit/>}/>
     </Routes>
     </BrowserRouter>
     </div>
