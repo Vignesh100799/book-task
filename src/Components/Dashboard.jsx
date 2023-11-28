@@ -38,7 +38,9 @@ const Dashboard = () => {
           <h1 className="page-title">Book Viewer</h1>
         </div>
       </header>
-      <Card data={data} handleDelete={handleDelete} />
+     <Card  data={data} handleDelete={handleDelete} />
+      
+      
     </div>
   );
 };

@@ -3,7 +3,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import { MUIStyledComponent } from '@mui/styled-engine-sc';
 import Dashboard from './Components/Dashboard';
-import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap'
 import Createbooks from './Components/Createbooks';
 import Edit from './Components/Edit';
 
