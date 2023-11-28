@@ -8,14 +8,14 @@ const Dashboard = () => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.app);
 
-  const handleDelete = async (userid)=>{
+  const handleDelete = async (userid) => {
     try {
-        await axios.delete(`https://656450eaceac41c0761de102.mockapi.io/author/${userid}`)
-        dispatch(deleteBook(userid))
-    } catch (error) {
-      
-    }
-  }
+      await axios.delete(
+        `https://656450eaceac41c0761de102.mockapi.io/author/${userid}`
+      );
+      dispatch(deleteBook(userid));
+    } catch (error) {}
+  };
 
   const getData = async () => {
     try {
@@ -33,14 +33,12 @@ const Dashboard = () => {
 
   return (
     <div>
-      <header className="full-width">
-        <div className="container">
-          <h1 className="page-title">Book Viewer</h1>
+      <div className="container">
+        <div className="row d-flex justify-content-center">
+          <h1 className=" p-5 m-5">Books Library</h1>
+          <Card data={data} handleDelete={handleDelete} />
         </div>
-      </header>
-     <Card  data={data} handleDelete={handleDelete} />
-      
-      
+      </div>
     </div>
   );
 };
